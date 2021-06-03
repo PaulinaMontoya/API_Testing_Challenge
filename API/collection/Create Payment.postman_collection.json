@@ -1,0 +1,1396 @@
+{
+	"info": {
+		"_postman_id": "a4cd07c6-8f24-47c6-9be6-029ccdad1d50",
+		"name": "Create Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"\",\"\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idempotency_key\": \"39463855-edb0-42c9-b0ae-2e4233ebfca5\",\r\n    \"source_id\": \"cnon:card-nonce-ok\",\r\n    \"amount_money\": {\r\n      \"amount\": 20,\r\n      \"currency\": \"USD\"\r\n    }\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_money\": {\r\n        \"amount\": 70,\r\n        \"currency\": \"AUD\"\r\n    },\r\n    \"idempotency_key\": \"674386ba-8121-4ac7-bc02-3de01f379f8d\",\r\n    \"source_id\": \"CASH\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment Error 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_money\": {\r\n        \"amount\": 70,\r\n        \"currency\": \"USD\"\r\n    },\r\n    \"idempotency_key\": \"674386ba-8121-4ac7-bc02-3de01f379f8d\",\r\n    \"source_id\": \"CASH\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{payment_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{payment_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Payment Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(404);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{wrong_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{wrong_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Payments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Payments Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}{{sort_error}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}{{sort_error}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Payments Error2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}{{wrong_cardbrand}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}{{wrong_cardbrand}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idempotency_key\": \"a23a0c6b-3332-406c-b9a2-89ca640f499d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{cancel}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{cancel}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Payment Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{cancel}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{cancel}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Payment Error 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idempotency_key\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{cancel}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{cancel}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{payment_id}}/{{complete}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{payment_id}}",
+						"{{complete}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete Payment Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(404);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{payments}}/{{wrong_id}}/{{complete}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{payments}}",
+						"{{wrong_id}}",
+						"{{complete}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_money\": {\r\n        \"amount\": 1,\r\n        \"currency\": \"USD\"\r\n    },\r\n    \"idempotency_key\": \"5fedc9d1-d266-401f-99e1-865024f74a87\",\r\n    \"payment_id\": \"Tn1PgTS0S5sm08HshNlNdZgp09SZY\",\r\n    \"reason\": \"Challange reason\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund Payment Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_money\": {\r\n        \"amount\": 8522,\r\n        \"currency\": \"USD\"\r\n    },\r\n    \"idempotency_key\": \"0b927040-59ce-449d-a04a-4638e9781cde\",\r\n    \"payment_id\": \"Tn1PgTS0S5sm08HshNlNdZgp09SZY\",\r\n    \"reason\": \"Challange reason\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund Payment Error 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(401);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_money\": {\r\n        \"amount\": 1,\r\n        \"currency\": \"USD\"\r\n    },\r\n    \"idempotency_key\": \"5fedc9d1-d266-401f-99e1-865024f74a87\",\r\n    \"payment_id\": \"Tn1PgTS0S5sm08HshNlNdZgp09SZY\",\r\n    \"reason\": \"Challange reason\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Refund",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}/{{refund_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}",
+						"{{refund_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Refund Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}/{{wrong_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}",
+						"{{wrong_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Refund Error 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/v1/refunds/{{refund_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"v1",
+						"refunds",
+						"{{refund_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Payment Refunds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Payment Refunds Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}{{sort_error}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}{{sort_error}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Payment Refunds Error 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function (){\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\",function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Square-Version",
+						"value": "2021-05-13",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{refunds}}?cursor=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{refunds}}"
+					],
+					"query": [
+						{
+							"key": "cursor",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "EAAAELKFESLvrZHoSRp7XvxPdtUVUF88fV3sM-VgUtaoO-tcLcZMsZTgQpagz8xI",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": ""
+		},
+		{
+			"value": ""
+		},
+		{
+			"value": ""
+		}
+	]
+}
