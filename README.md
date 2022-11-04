@@ -1,4 +1,4 @@
-# Postmand + Newman API Testing
+# Postman + Newman API Testing
 
 ## Pre-conditions:
 - [Install Node.js](https://nodejs.org/en/download/current/)
